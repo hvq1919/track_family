@@ -1,5 +1,5 @@
+const CODE_LENGHT = 5;
 const DEVICE_KEY = 'DEVICE_KEY';
-
 const MATERIAL_COLORS = [
   '#D32F2F', // Red 700
   '#C2185B', // Pink 700
@@ -17,4 +17,4 @@ const MATERIAL_COLORS = [
   '#5D4037', // Brown 700
 ];
 
-export { DEVICE_KEY, MATERIAL_COLORS };
+export { CODE_LENGHT, DEVICE_KEY, MATERIAL_COLORS };

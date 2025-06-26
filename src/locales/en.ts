@@ -4,4 +4,12 @@ export default {
   family_title: "Family",
   settings_title: "Settings",
   detail_title: "Detail",
+  this_phone_code: "This phone's code is:",
+  enter_code_label: "Please enter the code of another phone you want to track",
+  code: "Code (5 characters)",
+  family_name: "Family member's name",
+  avatar: "Choose avatar",
+  track_btn: "Track",
+  warning: "You are entering this phone's code. \nPlease enter the code of another phone you want to track.",
+  warning_wrong: "Incorrect code. Please enter again.",
 };

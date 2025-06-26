@@ -6,6 +6,7 @@ export default function DetailScreen() {
     return (
         <View style={{ flex: 1 }}>
             <Text style={{ color: mainColor }}>{i18n.t('detail_title')}</Text>
+
         </View>
     );
 }

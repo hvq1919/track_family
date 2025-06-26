@@ -4,4 +4,12 @@ export default {
   family_title: "Gia đình",
   settings_title: "Cài đặt",
   detail_title: "Chi tiết",
+  this_phone_code: "Mã của điện thoại này là:",
+  enter_code_label: "Hãy nhập mã của điện thoại khác mà bạn muốn theo dõi",
+  code: "Mã(gồm 5 ký tự)",
+  family_name: "Tên của người thân",
+  avatar: "Chọn avatar",
+  track_btn: "Theo dõi",
+  warning: "Bạn đang nhập mã của điện thoại này. \nHãy nhập mã của điện thoại khác mà bạn muốn theo dõi.",
+  warning_wrong: "Mã không đúng. Vui lòng nhập lại.",
 };
