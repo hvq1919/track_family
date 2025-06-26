@@ -1,6 +1,9 @@
-const CODE_LENGHT = 5;
-const DEVICE_KEY = 'DEVICE_KEY';
-const MATERIAL_COLORS = [
+export const CODE_LENGHT = 5;
+
+export const DEVICE_KEY = 'DEVICE_KEY';
+export const FAMILY_LIST_KEY = 'FAMILY_LIST';
+
+export const MATERIAL_COLORS = [
   '#D32F2F', // Red 700
   '#C2185B', // Pink 700
   '#7B1FA2', // Purple 700
@@ -16,5 +19,3 @@ const MATERIAL_COLORS = [
   '#E64A19', // Deep Orange 700
   '#5D4037', // Brown 700
 ];
-
-export { CODE_LENGHT, DEVICE_KEY, MATERIAL_COLORS };

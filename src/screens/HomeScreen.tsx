@@ -7,12 +7,29 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getRandomString, isValidInputString } from '../utils';
 import { DEVICE_KEY } from '../constants';
 import i18n from '../locales';
+import { FAMILY_LIST_KEY } from '../constants';
+import { useNavigation } from '@react-navigation/native';
 
 export default function HomeScreen() {
+    const navigation = useNavigation();
     const [randomStr, setRandomStr] = useState<string>('');
     const [inputCode, setInputCode] = useState('');
     const [familyName, setFamilyName] = useState('');
     const [warning, setWarning] = useState('');
+
+    /** Check if exist family list => goto Family tab */
+    useEffect(() => {
+        const checkFamilyList = async () => {
+            const listStr = await AsyncStorage.getItem(FAMILY_LIST_KEY);
+            if (listStr) {
+                const list = JSON.parse(listStr);
+                if (Array.isArray(list) && list.length > 0) {
+                    (navigation as any).navigate('Family');
+                }
+            }
+        };
+        checkFamilyList();
+    }, []);
 
     useEffect(() => {
         const loadOrCreate = async () => {
@@ -28,7 +45,7 @@ export default function HomeScreen() {
         loadOrCreate();
     }, []);
 
-    const handleTrack = () => {
+    const handleTrack = async () => {
         const input = inputCode.trim().toUpperCase();
         if (!isValidInputString(input)) {
             setWarning(i18n.t('warning_wrong'));
@@ -39,7 +56,25 @@ export default function HomeScreen() {
             Keyboard.dismiss();
 
             // TODO sent to server
-            Alert.alert(i18n.t('track_btn'), `${i18n.t('track_btn')}: ${input}`);
+
+            // Save local storage
+            try {
+                const oldListStr = await AsyncStorage.getItem(FAMILY_LIST_KEY);
+                let oldList = [];
+                if (oldListStr) {
+                    oldList = JSON.parse(oldListStr);
+                }
+                // Update last_address later
+                oldList.push({ code: input, name: familyName, last_address: '' });
+                await AsyncStorage.setItem(FAMILY_LIST_KEY, JSON.stringify(oldList));
+            } catch (e) {
+                Alert.alert('Error', 'Cannot save family member');
+            }
+
+            setInputCode('');
+            setFamilyName('');
+
+            (navigation as any).navigate('Family');
         }
     };
 
@@ -150,7 +185,7 @@ const styles = StyleSheet.create({
     },
     trackBtn: {
         backgroundColor: '#1976D2',
-        borderRadius: 10,
+        borderRadius: 5,
         paddingVertical: 12,
         paddingHorizontal: 60,
         marginTop: 20,
