@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { View, Text, TouchableOpacity, ViewStyle } from 'react-native';
 import WaveAvatarIcon, { getRandomColor } from '../components/WaveAvatarIcon';
+import { Ionicons } from '@expo/vector-icons';
 
 type Family = {
     code: string;
@@ -13,23 +14,25 @@ type Props = {
     onPress?: (color: string) => void;
     style?: ViewStyle;
     color?: string;
+    showArrow?: boolean;
 };
 
-export default function FamilyMemberCard({ family, onPress, color, style }: Props) {
+export default function FamilyMemberCard({ family, onPress, color, style, showArrow }: Props) {
     const colorRef = useRef<string>(color || getRandomColor());
     const avatarColor = colorRef.current;
 
     return (
         <TouchableOpacity
             onPress={onPress ? () => onPress(avatarColor) : undefined}
-            activeOpacity={onPress ? 0.8 : 1}
+            activeOpacity={onPress ? 0.6 : 1}
             style={{
                 marginBottom: 18,
                 borderRadius: 16,
                 backgroundColor: '#fff',
                 flexDirection: 'row',
                 alignItems: 'center',
-                padding: 14,
+                paddingVertical: 14,
+                paddingHorizontal: 10,
                 shadowColor: '#1976D2',
                 shadowOpacity: 0.08,
                 shadowRadius: 8,
@@ -55,6 +58,14 @@ export default function FamilyMemberCard({ family, onPress, color, style }: Prop
                     </Text>
                 </View>
             </View>
+            {showArrow && (
+                <Ionicons
+                    name="chevron-forward"
+                    size={26}
+                    color="#bdbdbd"
+                    style={{ marginLeft: 2 }}
+                />
+            )}
         </TouchableOpacity>
     );
 }

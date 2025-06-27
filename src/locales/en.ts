@@ -18,4 +18,6 @@ export default {
   cancel: "Cancel",
   no_family: "No family tracked yet.",
   last_address: "Last address",
+  no_family_tracked: "No family members tracked yet.",
+  add_family: "Add Family Member",
 };

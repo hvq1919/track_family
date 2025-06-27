@@ -46,6 +46,7 @@ export default function HomeScreen() {
     }, []);
 
     const handleTrack = async () => {
+        Keyboard.dismiss();
         const input = inputCode.trim().toUpperCase();
         if (!isValidInputString(input)) {
             setWarning(i18n.t('warning_wrong'));
@@ -53,7 +54,6 @@ export default function HomeScreen() {
             setWarning(i18n.t('warning'));
         } else {
             setWarning('');
-            Keyboard.dismiss();
 
             // TODO sent to server
 
@@ -98,6 +98,7 @@ export default function HomeScreen() {
                         autoCapitalize="characters"
                         maxLength={5}
                         style={styles.input}
+                        placeholderTextColor={'#AAA'}
                     />
                     <Text style={[styles.inputLabel, { marginTop: 10 }]}>{i18n.t('family_name')}</Text>
                     <TextInput
@@ -105,8 +106,9 @@ export default function HomeScreen() {
                         onChangeText={setFamilyName}
                         placeholder={i18n.t('family_name')}
                         style={styles.inputNormal}
+                        placeholderTextColor={'#AAA'}
                     />
-                    <TouchableOpacity onPress={handleTrack} style={styles.trackBtn} activeOpacity={0.85}>
+                    <TouchableOpacity onPress={handleTrack} style={styles.trackBtn} activeOpacity={0.6}>
                         <Text style={styles.trackBtnText}>{i18n.t('track_btn')}</Text>
                     </TouchableOpacity>
                     {warning ? (

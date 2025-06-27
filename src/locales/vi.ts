@@ -17,5 +17,7 @@ export default {
   confirm_delete: "Bạn có chắc muốn xoá \"{name}\" khỏi danh sách?",
   cancel: "Huỷ",
   no_family: "Chưa có người thân nào được theo dõi.",
-  last_address: "Địa chỉ cuối"
+  last_address: "Địa chỉ gần đây",
+  no_family_tracked: "Chưa có thành viên gia đình nào được theo dõi.",
+  add_family: "Thêm người thân để theo dõi",
 };
